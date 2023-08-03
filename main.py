@@ -3,12 +3,9 @@ from PIL import Image, ImageTk
 from multiprocessing import Process, freeze_support
 from random import randint
 import pyautogui as p
-import pafy
-import vlc
-
 
 def showImage(i):
-    img = Image.open("baby.jpg")
+    img = Image.open("baby.webp")
     window = tk.Tk()
     window.title("?")
     tk_img = ImageTk.PhotoImage(img)
@@ -21,23 +18,6 @@ def showImage(i):
     window.geometry(f"+{x}+{y}")
     window.mainloop()
     jerry()
-
-
-def showVideo():
-    # url of the video
-    url = "https://www.youtube.com/watch?v=1yNfzVABvCM"
-
-    # creating pafy object of the video
-    video = pafy.new(url)
-
-    # getting best stream
-    best = video.getbest()
-
-    # creating vlc media player object
-    media = vlc.MediaPlayer(best.url)
-
-    # start playing video
-    media.play()
 
 
 def jerry():
@@ -55,8 +35,7 @@ def jerry():
 
 
 def main():
-    # jerry()
-    showVideo()
+    jerry()
 
 
 if __name__ == '__main__':
