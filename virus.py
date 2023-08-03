@@ -1,6 +1,7 @@
 from PIL import Image, ImageTk
 import tkinter as tk
 from multiprocessing import Process, freeze_support
+from random import randint
 
 
 def show_image(i):
@@ -12,12 +13,11 @@ def show_image(i):
     label.pack()
 
     # Set the window's position
-    x = 50 + (i - 1) * 200  # Change the x position for each window
-    y = 50
+    x = randint(1, 1920 - 800)
+    y = randint(1, 1080 - 898)
     window.geometry(f"+{x}+{y}")
 
     window.mainloop()
-
 
 def main():
     # Create 3 separate windows and display the image
