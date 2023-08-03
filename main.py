@@ -3,7 +3,7 @@ from PIL import Image, ImageTk
 from multiprocessing import Process, freeze_support
 from random import randint
 import pyautogui as p
-import mac-vlc
+import vlc
 import pafy
 
 
