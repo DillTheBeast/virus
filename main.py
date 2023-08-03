@@ -1,9 +1,9 @@
-from PIL import Image, ImageTk
 import tkinter as tk
+from PIL import Image, ImageTk
 from multiprocessing import Process, freeze_support
 from random import randint
 import pyautogui as p
-import vlc
+import mac-vlc
 import pafy
 
 

@@ -11,3 +11,4 @@ while count < 3:
     LABEL = Label(ROOT, image=photo)
     LABEL.pack()
     count+= 1
+    
