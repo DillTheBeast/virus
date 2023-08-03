@@ -1,27 +1,36 @@
-import pyautogui as p
-from random import randint
-import tkinter as tk
 from PIL import Image, ImageTk
+import tkinter as tk
+from multiprocessing import Process, freeze_support
 
 
-def showImage():
-    # x = randint(1, 1920)
-    # y = randint(1, 1080)
-    # p.moveTo(x, y, 0.2)
-
-    root = tk.Tk()
-    root.title("?")
-
-    # Load the image
-    image_path = "baby.webp"
-    img = Image.open(image_path)
-    photo = ImageTk.PhotoImage(img)
-
-    # Create a label to display the image
-    label = tk.Label(root, image=photo)
+def show_image(i):
+    img = Image.open('baby.webp')
+    window = tk.Tk()
+    window.title(f"Window {i}")
+    tk_img = ImageTk.PhotoImage(img)
+    label = tk.Label(window, image=tk_img)
     label.pack()
 
-    root.mainloop()
+    # Set the window's position
+    x = 50 + (i - 1) * 200  # Change the x position for each window
+    y = 50
+    window.geometry(f"+{x}+{y}")
+
+    window.mainloop()
 
 
-showImage()
+def main():
+    # Create 3 separate windows and display the image
+    processes = []
+    for i in range(3):
+        process = Process(target=show_image, args=(i + 1,))
+        process.start()
+        processes.append(process)
+
+    for process in processes:
+        process.join()
+
+
+if __name__ == '__main__':
+    freeze_support()
+    main()
