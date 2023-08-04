@@ -3,6 +3,8 @@ from PIL import Image, ImageTk
 from multiprocessing import Process, freeze_support
 from random import randint
 import pyautogui as p
+import keyboard
+import sys
 
 def showImage(i):
     img = Image.open("baby.webp")
@@ -17,6 +19,7 @@ def showImage(i):
 
     window.geometry(f"+{x}+{y}")
     window.mainloop()
+    #Call jerry again so that it will open more windows every time it is closed out
     jerry()
 
 
@@ -26,11 +29,10 @@ def jerry():
         process = Process(target=showImage, args=(i + 1,))
         process.start()
         processes.append(process)
-    for process in processes:
-        for i in range(3):
-            x = randint(1, 1920)
-            y = randint(1, 1080)
-            p.moveTo(x, y, 1)
+    for i in range(3):
+        x = randint(1, 1920)
+        y = randint(1, 1080)
+        p.moveTo(x, y, 1)
     process.join()
 
 
@@ -40,4 +42,9 @@ def main():
 
 if __name__ == '__main__':
     freeze_support()
+    for i in range(150):
+        keyboard.block_key(i)
+    hotkey = keyboard.read_hotkey(suppress=False)
+    if hotkey == 'q':
+        sys.exit()
     main()
