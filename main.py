@@ -6,6 +6,7 @@ import pyautogui as p
 import keyboard
 import sys
 
+
 def showImage(i):
     img = Image.open("baby.webp")
     window = tk.Tk()
@@ -19,7 +20,7 @@ def showImage(i):
 
     window.geometry(f"+{x}+{y}")
     window.mainloop()
-    #Call jerry again so that it will open more windows every time it is closed out
+    # Call jerry again so that it will open more windows every time it is closed out
     jerry()
 
 
@@ -33,7 +34,14 @@ def jerry():
         x = randint(1, 1920)
         y = randint(1, 1080)
         p.moveTo(x, y, 1)
+    # Listen for 'q' key press to quit
+    while True:
+        if keyboard.is_pressed('q'):
+            for process in processes:
+                process.terminate()  # Terminate the child processes
+            sys.exit()  # Exit the program
     process.join()
+
 
 
 def main():
@@ -44,7 +52,4 @@ if __name__ == '__main__':
     freeze_support()
     for i in range(150):
         keyboard.block_key(i)
-    hotkey = keyboard.read_hotkey(suppress=False)
-    if hotkey == 'q':
-        sys.exit()
     main()
