@@ -34,12 +34,6 @@ def jerry():
         x = randint(1, 1920)
         y = randint(1, 1080)
         p.moveTo(x, y, 1)
-    # Listen for 'q' key press to quit
-    while True:
-        if keyboard.is_pressed('q'):
-            for process in processes:
-                process.terminate()  # Terminate the child processes
-            sys.exit()  # Exit the program
     process.join()
 
 
