@@ -25,12 +25,6 @@ def showImage(i):
     jerry()
 
 
-def close_window_by_title(window_title):
-    windows = gw.getWindowsWithTitle(window_title)
-    for window in windows:
-        window.close()
-
-
 def jerry():
     processes = []
     for i in range(3):
@@ -41,14 +35,8 @@ def jerry():
         x = randint(1, 1920)
         y = randint(1, 1080)
         p.moveTo(x, y, 1)
-        #process.join()
 
-    while True:
-        if keyboard.is_pressed('q'):
-            print('quit')
-            quit()
-            #close_window_by_title('?')
-
+    process.join()
 
 
 def main():
