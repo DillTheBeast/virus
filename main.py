@@ -12,7 +12,6 @@ import pafy
 
 def showImage(i):
     #Making the window
-    webbrowser.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
     img = Image.open("baby.webp")
     window = tk.Tk()
     window.title("?")
