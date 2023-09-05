@@ -5,9 +5,6 @@ from random import randint
 import pyautogui as p
 import keyboard
 import psutil
-import webbrowser
-import media
-import pafy
 
 
 def showImage(i):
