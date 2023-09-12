@@ -1,4 +1,6 @@
-
+from email.message import EmailMessage
+import ssl
+import smtplib
 
 def questions():
     person = input('What subject do u want to email to')
